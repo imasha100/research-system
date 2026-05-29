@@ -1,11 +1,18 @@
+import React, { useState } from 'react';
+import StartPage from './components/StartPage';
+// 👇 මෙන්න මේ පේළියේ පාර (Path) /customer/CustomerLogin ලෙස වෙනස් විය යුතුයි
+import CustomerLogin from './components/customer/CustomerLogin'; 
+
 function App() {
-  return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Research Management System
-      </h1>
-    </div>
-  )
+  const [currentPage, setCurrentPage] = useState('start');
+
+  if (currentPage === 'start') {
+    return <StartPage onNavigate={setCurrentPage} />;
+  }
+
+  if (currentPage === 'customer-login') {
+    return <CustomerLogin onNavigate={setCurrentPage} />;
+  }
 }
 
-export default App
+export default App;
